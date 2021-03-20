@@ -1,0 +1,32 @@
+form {
+    margin-top: 1rem;
+    background-color: rgba(0, 0, 0, 0.266);
+    backdrop-filter: blur(8px);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+form input[name="city"], form input[name="country"] {
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-bottom: 2px solid whitesmoke;
+    border-radius: 0;
+}
+
+form input:focus {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    color: white !important;
+}
+
+button {
+    color: white;
+    border: solid 1px white;
+    border-radius: 5px;
+    background-color: rgba(78, 167, 205, 0.327);
+}
+
+button:hover{
+    background-color: rgba(46, 137, 176, 0.327);
+}

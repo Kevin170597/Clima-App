@@ -1,0 +1,19 @@
+.infoCard {
+    background-color: rgba(0, 0, 0, 0.266);
+    border-radius: 5px;
+    backdrop-filter: blur(8px);
+    margin-bottom: 10px;
+}
+
+.cards .cityName {
+    padding-top: 5px;
+    font-size: 35px;
+}
+
+.cards .tempNow {
+    font-size: 40px;
+}
+
+.cards .desc {
+    font-size: 28px;
+}
