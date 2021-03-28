@@ -71,7 +71,7 @@ class App extends React.Component {
   render() {
     return(
       <div className="App">
-        <img className="logoCloud" src={logo}></img>
+        <img className="logoCloud" src={logo} alt=""></img>
         <Form loadweather={this.getWeather} />
 
         <Weather city={this.state.city} temp_celsius={this.state.celsius} temp_min={this.state.temp_min} temp_max={this.state.temp_max} description={this.state.description} humidity={this.state.humidity} wind={this.state.wind} weatherIconOnline={this.state.weatherIconOnline} />
