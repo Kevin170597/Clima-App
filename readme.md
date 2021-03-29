@@ -21,11 +21,11 @@
 
  * Clone the repository into a new folder.
  * Open a terminal in the project folder and run the following command:
- ...
- npm install
- ...
+```
+npm install
+```
  * When the installation is finished run the following command:
- ...
- npm start
- ...
+```
+npm start
+```
 
