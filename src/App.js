@@ -20,7 +20,8 @@ class App extends React.Component {
       temp_min: "",
       description: "",
       wind: "",
-      humidity: ""
+      humidity: "",
+      errorMessage: ""
     };
     
   }
@@ -49,16 +50,32 @@ class App extends React.Component {
 
       console.log(response)
 
-      this.setState({
-        city: `${response.name}, ${response.sys.country}`,
-        celsius: this.calCelsius(response.main.temp),
-        temp_max: this.calCelsius(response.main.temp_max),
-        temp_min: this.calCelsius(response.main.temp_min),
-        description: response.weather[0].description[0].toUpperCase() + response.weather[0].description.slice(1),
-        humidity: response.main.humidity,
-        wind: this.calKMH(response.wind.speed),
-        weatherIconOnline: response.weather[0].icon
-      })
+      if(response.cod !== "404") {
+        this.setState({
+          city: `${response.name}, ${response.sys.country}`,
+          celsius: this.calCelsius(response.main.temp),
+          temp_max: this.calCelsius(response.main.temp_max),
+          temp_min: this.calCelsius(response.main.temp_min),
+          description: response.weather[0].description[0].toUpperCase() + response.weather[0].description.slice(1),
+          humidity: response.main.humidity,
+          wind: this.calKMH(response.wind.speed),
+          weatherIconOnline: response.weather[0].icon,
+          errorMessage: ""
+        })
+      } else {
+        this.setState({
+          city: "",
+          weatherIconOnline: "",
+          main: "",
+          celsius: "",
+          temp_max: "",
+          temp_min: "",
+          description: "",
+          wind: "",
+          humidity: "",
+          errorMessage: "City not found :("
+        })
+      }
     } else if(city && !country) {
       swal({title: "No country", text: "Please, enter a country", icon: "warning"})
     } else if(!city && country){
@@ -67,14 +84,14 @@ class App extends React.Component {
       swal({title: "No city and country", text: "Please, enter a city and a country", icon:"warning"})
     }
   }
-  
+
   render() {
     return(
       <div className="App">
         <img className="logoCloud" src={logo} alt=""></img>
         <Form loadweather={this.getWeather} />
 
-        <Weather city={this.state.city} temp_celsius={this.state.celsius} temp_min={this.state.temp_min} temp_max={this.state.temp_max} description={this.state.description} humidity={this.state.humidity} wind={this.state.wind} weatherIconOnline={this.state.weatherIconOnline} />
+        <Weather errorMessage={this.state.errorMessage} city={this.state.city} temp_celsius={this.state.celsius} temp_min={this.state.temp_min} temp_max={this.state.temp_max} description={this.state.description} humidity={this.state.humidity} wind={this.state.wind} weatherIconOnline={this.state.weatherIconOnline} />
       </div>
     );
   }

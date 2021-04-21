@@ -8,6 +8,7 @@ const Weather = (props) => {
             <div className="cards pt-2">
                 <div className="infoCard pb-2">
                     <h1 className="cityName">{props.city}</h1>
+                    <h1 className="errorMessage">{props.errorMessage}</h1>
 
                     {props.temp_celsius ? (<h1 className="tempNow">{props.temp_celsius}&deg;c</h1>) : null}
 
